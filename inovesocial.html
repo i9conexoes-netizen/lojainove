@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inove Social - Transforme Seguidores em Clientes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e variáveis */
+        :root {
+            --primary: #E1306C;
+            --primary-dark: #C13584;
+            --primary-darker: #833AB4;
+            --secondary: #405DE6;
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --gray-light: #CED4DA;
+            --success: #28A745;
+            --danger: #DC3545;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2.3rem;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .text-secondary {
+            color: var(--secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #3A4BD6);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #3A4BD6, #2F3DB8);
+        }
+        
+        .btn-large {
+            padding: 20px 40px;
+            font-size: 1.3rem;
+        }
+        
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(225, 48, 108, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(225, 48, 108, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(225, 48, 108, 0);
+            }
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(193, 53, 132, 0.9), rgba(131, 58, 180, 0.9)), url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light), transparent);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        /* Counter Section */
+        .counter {
+            background-color: white;
+            padding: 50px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .counter-item {
+            text-align: center;
+        }
+        
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .counter-text {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+        
+        /* Problem Section */
+        .problem {
+            background-color: var(--light);
+        }
+        
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .problem-card {
+            background-color: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--danger);
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--danger);
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, var(--primary-darker), var(--dark));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        .solution-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .solution-text {
+            flex: 1;
+        }
+        
+        .solution-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .solution-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Strategy Section */
+        .strategy {
+            background-color: var(--light);
+        }
+        
+        .strategy-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .strategy-step {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .strategy-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 35px 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .testimonial-info h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .testimonial-info p {
+            margin: 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+            color: white;
+            text-align: center;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            color: var(--dark);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card:before {
+            content: 'OFERTA ESPECIAL';
+            position: absolute;
+            top: 20px;
+            right: -50px;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 60px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+        
+        .feature-list li {
+            margin-bottom: 12px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        .feature-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .price small {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: normal;
+        }
+        
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        .guarantee-badge i {
+            margin-right: 10px;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background-color: white;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            background-color: var(--light);
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .faq-answer {
+            background-color: var(--light);
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--secondary), #3A4BD6);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+        }
+        
+        .footer-links h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .solution-content {
+                flex-direction: column;
+            }
+            
+            .strategy-step, .strategy-step:nth-child(even) {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .btn-large {
+                padding: 18px 35px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .counter-number {
+                font-size: 2rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fab fa-instagram"></i>
+                    INOVE SOCIAL
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#estrategia">A Estratégia</a></li>
+                    <li><a href="#solucao">A Solução</a></li>
+                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#planos" class="btn">Comece Agora</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>CADA PERFIL DO INSTAGRAM É UMA MINA DE OURO DE CLIENTES</h1>
+            <p>Pare de implorar por atenção e comece a dominar o jogo. Acesse qualquer público-alvo e transforme seguidores em clientes com uma precisão cirúrgica.</p>
+            <div class="hero-cta">
+                <a href="#planos" class="btn btn-large btn-pulse">QUERO ACESSAR A MINA DE OURO!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="counter">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-number">+8.452</div>
+                    <div class="counter-text">Contas Otimizadas</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">+2.1M</div>
+                    <div class="counter-text">Seguidores Conquistados</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">+R$5.2M</div>
+                    <div class="counter-text">Em Vendas Geradas</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">96,3%</div>
+                    <div class="counter-text">Taxa de Satisfação</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <h2 class="section-title">O Instagram está te deixando para trás enquanto outros lucram.</h2>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>CRESCIMENTO LENTO</h3>
+                    <p>Você posta todo dia, usa hashtags, mas seu perfil não cresce. Enquanto isso, outros dominam o algoritmo e faturam alto.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-search-dollar"></i>
+                    </div>
+                    <h3>PÚBLICO ERRADO</h3>
+                    <p>Seus seguidores não compram, só consomem seu conteúdo. Você precisa de pessoas interessadas no que você vende.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>PERDA DE TEMPO</h3>
+                    <p>Horas e horas criando conteúdo, engajando manualmente, sem resultados concretos em vendas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solucao" class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h2 class="section-title">A INOVE SOCIAL É SUA VANTAGEM INJUSTA NO INSTAGRAM</h2>
+                    <p>Esta não é mais uma ferramenta de automação comum. É um <strong>sistema de inteligência predatória</strong> que transforma qualquer perfil do Instagram em sua fonte particular de clientes qualificados.</p>
+                    <p>Imagine ter acesso direto ao público de qualquer influencer, marca ou concorrente do seu nicho. Pessoas que já demonstraram interesse exatamente no que você oferece.</p>
+                    <a href="#planos" class="btn btn-secondary">QUERO ESSA VANTAGEM AGORA</a>
+                </div>
+                <div class="solution-image">
+                    <img src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Painel de controle da Inove Social">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section id="estrategia" class="strategy">
+        <div class="container">
+            <h2 class="section-title">A ESTRATÉGIA DA MINA DE OURO EM 3 PASSOS</h2>
+            <div class="strategy-steps">
+                <div class="strategy-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>ESCOLHA SUA FONTE 💎</h3>
+                        <p>Seu cliente ideal segue quem? Um time de futebol? Um cantor famoso? Um influencer do seu nicho? Um concorrente? PERFEITO. Basta copiar o @ de QUALQUER um desses perfis e colar na ferramenta.</p>
+                    </div>
+                </div>
+                <div class="strategy-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>LIBERE A MÁQUINA 🤖</h3>
+                        <p>Agora a mágica acontece. Dê as ordens para a Inove Social:</p>
+                        <ul>
+                            <li><strong>SIGA A AUDIÊNCIA DELES:</strong> A ferramenta vai seguir cirurgicamente as pessoas que seguem esse perfil.</li>
+                            <li><strong>INVADA O DIRECT:</strong> Programe uma mensagem de venda irresistível e a ferramenta dispara no privado desses seguidores.</li>
+                            <li><strong>SEJA ONIPRESENTE:</strong> A máquina também vai curtir, comentar e visualizar os Stories dessas pessoas.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="strategy-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>DOMINE O JOGO 👑</h3>
+                        <p>O jogo muda completamente. Você para de ser um mero espectador e se torna um caçador. Enquanto outros esperam pelo cliente, você vai até ele. Seu nome aparece tantas vezes que se torna impossível ignorar.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="recursos" class="features">
+        <div class="container">
+            <h2 class="section-title">SEU ARSENAL COMPLETO DE DOMINAÇÃO</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>ALVO PERFEITO</h3>
+                    <p>Não importa quem seja seu cliente ideal - a Inove Social te dá acesso direto a ele. Use perfis de influenciadores, marcas, concorrentes ou qualquer conta relevante do seu nicho como fonte de clientes em potencial.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3>BUSCA POR HASHTAG E LOCALIZAÇÃO</h3>
+                    <p>Capture clientes que seguem tendências específicas ou frequentam lugares caros. Use hashtags populares e localizações estratégicas para encontrar pessoas com alto poder de compra.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AUTOMAÇÃO INTELIGENTE</h3>
+                    <p>Seu perfil funciona 24/7, mesmo enquanto você dorme. A ferramenta segue, curte, comenta e envia mensagens de forma natural e estratégica, sem parecer robótica.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>GESTÃO INTELIGENTE</h3>
+                    <p>Limpe automaticamente seu perfil, deixando de seguir quem não te segue de volta. Mantenha uma imagem de autoridade e alta taxa de engajamento.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>ANÁLISES DETALHADAS</h3>
+                    <p>Acompanhe o desempenho de cada estratégia em tempo real. Saiba exatamente o que está funcionando e otimize suas campanhas para maximizar resultados.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>PROTEÇÃO ANTIDETECÇÃO</h3>
+                    <p>Nosso sistema imita o comportamento humano para evitar bloqueios. Pausas aleatórias, limites inteligentes e padrões variáveis mantêm sua conta segura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Quem já descobriu a mina de ouro, não volta atrás</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Em 30 dias, consegui 2.300 seguidores reais e fechei R$ 18.000 em vendas. A estratégia de mirar nos seguidores dos meus concorrentes foi genial."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AS</div>
+                        <div class="testimonial-info">
+                            <h4>Ana Souza</h4>
+                            <p>Empreendedora Digital</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Finalmente entendi que crescer no Instagram não é sobre postar conteúdo, é sobre saber onde estão seus clientes. A Inove Social me mostrou isso."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RF</div>
+                        <div class="testimonial-info">
+                            <h4>Ricardo Ferreira</h4>
+                            <p>Consultor Financeiro</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"O sistema de mensagens no direct mudou tudo. Enquanto outros esperam engajamento, eu fecho vendas diretamente. É um atalho injusto."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CM</div>
+                        <div class="testimonial-info">
+                            <h4>Camila Mendes</h4>
+                            <p>Personal Stylist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="planos" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Pare de jogar para participar. Comece a jogar para ganhar.</h2>
+            <p class="text-center">Acesso total à ferramenta que vai colocar você anos à frente da concorrência.</p>
+            
+            <div class="pricing-card">
+                <h3>PLANO INOVE SOCIAL - DOMINAÇÃO TOTAL</h3>
+                <ul class="feature-list">
+                    <li>Acesso a seguidores de qualquer perfil do Instagram</li>
+                    <li>Disparo de mensagens no Direct em massa</li>
+                    <li>Sistema de Follow/Unfollow inteligente</li>
+                    <li>Engajamento automático em Stories e posts</li>
+                    <li>Busca por Hashtag e Localização</li>
+                    <li>Gestão inteligente de seguidores</li>
+                    <li>Análises detalhadas de performance</li>
+                    <li>Proteção antideteção avançada</li>
+                    <li>Suporte prioritário 24/7</li>
+                    <li>Atualizações gratuitas para sempre</li>
+                </ul>
+                <div class="price">R$ 97<span>,00</span> <small>/mês</small></div>
+                <a href="#" class="btn btn-large btn-pulse">DOMINAR O INSTAGRAM AGORA</a>
+                <div class="guarantee-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Garantia de 7 dias ou seu dinheiro de volta
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Ainda tem dúvidas?</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>É seguro para minha conta?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Nossa tecnologia imita perfeitamente o comportamento humano, com pausas aleatórias e limites conservadores que mantêm sua conta segura. Milhares de contas usam nossa ferramenta sem problemas.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quantas contas posso gerenciar?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Com o plano padrão, você pode gerenciar até 3 contas do Instagram simultaneamente. Para mais contas, entre em contato conosco.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quanto tempo leva para ver resultados?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Os primeiros resultados aparecem em poucos dias, com aumento significativo de seguidores qualificados. Em 2-3 semanas, você já estará fechando vendas diretamente pelo Instagram.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Preciso de conhecimentos técnicos?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! Nossa plataforma é 100% visual e intuitiva. Em poucos minutos, você estará configurado e pronto para dominar o Instagram.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Funciona para qualquer nicho?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Se você usa o Instagram para negócios, a Inove Social vai otimizar seus resultados, seja qual for seu nicho: e-commerce, serviços, imóveis, coaching, ou qualquer outro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Não perca mais tempo com estratégias ultrapassadas</h2>
+            <p>Domine o Instagram e transforme seguidores em clientes</p>
+            <a href="#planos" class="btn btn-large btn-pulse">QUERO MINHA VANTAGEM INJUSTA</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fab fa-instagram"></i>
+                        INOVE SOCIAL
+                    </div>
+                    <p>Transforme qualquer perfil do Instagram em sua fonte particular de clientes qualificados.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#estrategia">A Estratégia</a></li>
+                        <li><a href="#solucao">A Solução</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#planos">Planos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Termos de Serviço</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="mailto:suporte@inovesocial.com">suporte@inovesocial.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Esta ferramenta é uma aplicação independente e não possui afiliação ou endosso oficial do Instagram ou da Meta.</p>
+                <p>&copy; 2023 Inove Social. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+                
+                // Toggle icon
+                const icon = question.querySelector('span:last-child');
+                icon.textContent = answer.classList.contains('active') ? '−' : '+';
+            });
+        });
+        
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+        
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inove Zap - Fábrica de Prospecção e Vendas para IPTV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #25D366;
+            --secondary: #128C7E;
+            --accent: #FF6B00;
+            --dark: #075E54;
+            --light: #F0F8F2;
+            --text: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(255,107,0,0.3);
+        }
+        
+        .btn:hover {
+            background-color: #e55a00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255,107,0,0.4);
+        }
+        
+        .btn-large {
+            padding: 18px 45px;
+            font-size: 1.2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(37, 211, 102, 0.9), rgba(18, 140, 126, 0.9)), url('https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-weight: 500;
+        }
+        
+        .hero-badge {
+            background-color: var(--accent);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        /* Problem Section */
+        .problem {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .problem-content {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        
+        .problem-text {
+            flex: 1;
+        }
+        
+        .problem-text h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--dark);
+        }
+        
+        .problem-list {
+            list-style: none;
+        }
+        
+        .problem-list li {
+            margin-bottom: 18px;
+            padding-left: 40px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .problem-list li:before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ff4d4d;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .problem-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .problem-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Solution Section */
+        .solution {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--light), #e8f5e9);
+        }
+        
+        .solution-intro {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+        }
+        
+        .solution-intro h3 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 25px;
+        }
+        
+        .solution-intro p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            border-top: 5px solid var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .feature-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        /* Strategy Section */
+        .strategy {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .strategy-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 70px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .step-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .step-feature {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .step-feature h4 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .step-feature h4 i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--light), #e8f5e9);
+        }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 4px solid var(--primary);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .price {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .price-amount {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .price-period {
+            color: #666;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+        
+        .price-old {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+        
+        .price-save {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 40px;
+            font-size: 1.1rem;
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+        
+        .pricing-card .btn {
+            width: 100%;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .faq-items {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+        
+        .faq-question {
+            padding: 25px;
+            background: var(--light);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 25px;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+        }
+        
+        .cta p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+        
+        .cta .btn {
+            background-color: var(--accent);
+            font-size: 1.3rem;
+            padding: 20px 50px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 70px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d5a3d;
+            color: #999;
+            font-size: 1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .problem-content, .step {
+                flex-direction: column;
+            }
+            
+            .step:nth-child(even) {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 8px 12px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fab fa-whatsapp"></i>
+                    INOVE ZAP
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#problema">O Problema</a></li>
+                        <li><a href="#solucao">A Solução</a></li>
+                        <li><a href="#estrategia">Como Funciona</a></li>
+                        <li><a href="#precos">Preço</a></li>
+                        <li><a href="#cta">Comprar Agora</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container fade-in">
+            <div class="hero-badge">NÃO PRECISA DE TRÁFEGO PAGO!</div>
+            <h1>CONHEÇA A FORMA MAIS INTELIGENTE DE CAPTAR CLIENTES PARA IPTV</h1>
+            <p>Descubra como vender IPTV sem se matar no atendimento 1 a 1 ou gastar fortunas com anúncios sem retorno</p>
+            <a href="#precos" class="btn btn-large">QUERO ACESSAR O INOVE ZAP</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem" id="problema">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Problema que Todo Vendedor de IPTV Enfrenta</h2>
+                <p>Pra vender IPTV, a maioria te fala que só tem dois caminhos...</p>
+            </div>
+            <div class="problem-content">
+                <div class="problem-text">
+                    <h3>Mas e se eu te dissesse que isso é papo furado?</h3>
+                    <p>Que você não precisa fazer tráfego pago para ter um fluxo constante de pessoas interessadas no seu serviço?</p>
+                    <ul class="problem-list">
+                        <li>Se matar o dia inteiro no 1 a 1, catando cliente de forma manual e lenta</li>
+                        <li>Torrar uma fortuna com tráfego pago, sem garantia nenhuma de retorno</li>
+                        <li>Perder horas procurando clientes em grupos e redes sociais</li>
+                        <li>Ficar limitado pelo número de pessoas que consegue atender</li>
+                        <li>Depender apenas do boca a boca para conseguir novos clientes</li>
+                    </ul>
+                </div>
+                <div class="problem-image">
+                    <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Problemas de vendas">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solucao">
+        <div class="container">
+            <div class="section-title">
+                <h2>A Solução Definitiva para Vendedores de IPTV</h2>
+                <p>Existe uma ferramenta que é um atalho. Uma forma muito mais poderosa de encontrar e falar com centenas de clientes todos os dias, de forma orgânica e automática.</p>
+            </div>
+            <div class="solution-intro">
+                <h3>Apresento o Inove Zap: sua fábrica de prospecção e vendas que coloca o controle total no seu bolso</h3>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h4>Extrator Google Maps</h4>
+                    <p>Quer vender pra comércios? Digite "bares", "barbearias", "adegas" em qualquer cidade. A ferramenta te entrega na hora a lista com o WhatsApp de todos os donos. É só chegar oferecendo o plano pra eles passarem os jogos!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h4>Gerador de Números por DDD</h4>
+                    <p>Essa é pra começar do zero e dominar qualquer estado! Não tem lista? Sem problemas. Escolha um DDD (ex: 11 pra SP, 71 pra Bahia), e a ferramenta GERA MILHARES de números de WhatsApp daquela região pra você. É uma chuva de contatos pra divulgar no privado!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔎</div>
+                    <h4>Buscador de Grupos</h4>
+                    <p>A ferramenta varre o Google, YouTube e outras redes, te entregando centenas de links de grupos de futebol, filmes e séries pra você entrar e passar o rodo, extraindo o contato de todos os membros!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="strategy" id="estrategia">
+        <div class="container">
+            <div class="section-title">
+                <h2>SE LIGA NA ESTRATÉGIA COMPLETA E ABSURDA:</h2>
+            </div>
+            <div class="strategy-steps">
+                <!-- Primeiro Passo -->
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>PRIMEIRO, A FÁBRICA DE CONTATOS</h3>
+                        <p>Aqui você cria sua lista do zero, sem depender de ninguém</p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <h4><i class="fas fa-map-marker-alt"></i> EXTRATOR GOOGLE MAPS</h4>
+                                <p>Encontre estabelecimentos comerciais de qualquer tipo em qualquer cidade</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4><i class="fas fa-fire"></i> GERADOR DE NÚMEROS POR DDD</h4>
+                                <p>Gere milhares de números de WhatsApp de qualquer região do Brasil</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4><i class="fas fa-search"></i> BUSCADOR DE GRUPOS</h4>
+                                <p>Encontre grupos de WhatsApp por interesse e extraia todos os contatos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Segundo Passo -->
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>SEGUNDO, A DIVULGAÇÃO EXPLOSIVA</h3>
+                        <p>Agora você ataca com suas mensagens de vendas</p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <h4><i class="fas fa-bolt"></i> EM MASSA NO PRIVADO</h4>
+                                <p>Dispara sua propaganda diretamente no privado de milhares de pessoas com um clique</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4><i class="fas fa-bomb"></i> EM CENTENAS DE GRUPOS</h4>
+                                <p>Posta sua propaganda em todos os grupos que você entrou de uma só vez</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Terceiro Passo -->
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>TERCEIRO, O ARSENAL DE SEGURANÇA E AUTOMAÇÃO</h3>
+                        <p>Trabalhe igual profissional</p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <h4><i class="fas fa-shield-alt"></i> ANTI-BLOQUEIO E AQUECEDOR DE CHIP</h4>
+                                <p>Nosso sistema de maturação aquece seus chips novos pra aguentar o trabalho pesado, e a variação de mensagens protege seu número principal</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4><i class="fas fa-clock"></i> AGENDAMENTO INTELIGENTE</h4>
+                                <p>Tem jogo importante às 21h? Programe suas propagandas pra serem disparadas no horário de pico, sem você precisar fazer nada</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4><i class="fas fa-check-circle"></i> VALIDADOR DE NÚMEROS</h4>
+                                <p>Antes de gastar seus envios, passe as listas no nosso filtro. Ele mostra quem realmente tem WhatsApp e quem não tem. Zero desperdício!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="precos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Acesso Completo à Plataforma</h2>
+                <p>Um único plano com todos os recursos para transformar seus resultados</p>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Plano Vitalício</h3>
+                    <div class="price">
+                        <div class="price-amount">R$ 100</div>
+                        <div class="price-period">Acesso vitalício</div>
+                        <div class="price-old">De R$ 497 <span class="price-save">Economize R$ 397</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Contatos ilimitados</li>
+                        <li>Extrator Google Maps</li>
+                        <li>Gerador de números por DDD</li>
+                        <li>Buscador de grupos</li>
+                        <li>Disparo em massa no privado</li>
+                        <li>Postagem em grupos</li>
+                        <li>Anti-bloqueio e aquecedor de chip</li>
+                        <li>Agendamento inteligente</li>
+                        <li>Validador de números</li>
+                        <li>Suporte prioritário</li>
+                        <li>Atualizações gratuitas</li>
+                    </ul>
+                    <a href="#cta" class="btn">QUERO GARANTIR MEU ACESSO</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas sobre o Inove Zap</p>
+            </div>
+            
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Funciona apenas para IPTV?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! O Inove Zap funciona para qualquer tipo de negócio. Focamos em IPTV porque é um mercado muito aquecido, mas você pode usar para vender qualquer produto ou serviço.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Quantos contatos posso extrair por mês?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O plano vitalício oferece contatos ilimitados! Você pode extrair quantos contatos precisar sem restrições.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Preciso ter experiência com tecnologia?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! O Inove Zap foi desenvolvido para ser extremamente simples e intuitivo. Qualquer pessoa, mesmo sem experiência prévia, consegue usar todas as funcionalidades em poucos minutos.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Como funciona o pagamento?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O pagamento é único e vitalício. Você paga R$ 100 uma única vez e tem acesso à plataforma para sempre, com todos os recursos disponíveis.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        O sistema é seguro para meu número?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Temos sistema anti-bloqueio e aquecedor de chip que protege seu número principal e aquece chips novos para aguentar o trabalho pesado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Pronto pra parar de perder tempo e começar a lucrar de verdade?</h2>
+            <p>Resumindo: com o Inove Zap você cria a lista do zero em qualquer estado, encontra clientes comerciais, acha grupos, divulga em massa e protege seu número. É a ferramenta mais completa e agressiva do mercado.</p>
+            <a href="#" class="btn btn-large">QUERO ACESSAR O INOVE ZAP AGORA</a>
+            <p><small>Pagamento único de R$ 100 • Acesso vitalício • Suporte dedicado</small></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Inove Zap</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Depoimentos</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Extrator Google Maps</a></li>
+                        <li><a href="#">Gerador de Números</a></li>
+                        <li><a href="#">Buscador de Grupos</a></li>
+                        <li><a href="#">Disparo em Massa</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Status do Sistema</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Inove Zap. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Add fade-in animation to elements when they come into view
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.problem, .solution, .strategy, .pricing, .faq').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

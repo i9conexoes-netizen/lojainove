@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inove Zap - Vendedor IA 24h que Trabalha de Graça</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e variáveis */
+        :root {
+            --primary: #25D366;
+            --primary-dark: #128C7E;
+            --primary-darker: #075E54;
+            --secondary: #FF6B35;
+            --dark: #121212;
+            --darker: #0A0A0A;
+            --light: #F8F9FA;
+            --gray: #6C757D;
+            --gray-light: #CED4DA;
+            --success: #28A745;
+            --danger: #DC3545;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.15);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+        
+        h2 {
+            font-size: 2.3rem;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 1.6rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-primary {
+            color: var(--primary);
+        }
+        
+        .text-secondary {
+            color: var(--secondary);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, var(--secondary), #E55A2B);
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #E55A2B, #CC4A23);
+        }
+        
+        .btn-large {
+            padding: 20px 40px;
+            font-size: 1.3rem;
+        }
+        
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+            border-radius: 3px;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(18, 140, 126, 0.9), rgba(7, 94, 84, 0.9)), url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--light), transparent);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        /* Counter Section */
+        .counter {
+            background-color: white;
+            padding: 50px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .counter-item {
+            text-align: center;
+        }
+        
+        .counter-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .counter-text {
+            font-size: 1.1rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+        
+        /* Problem Section */
+        .problem {
+            background-color: var(--light);
+        }
+        
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .problem-card {
+            background-color: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--danger);
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--danger);
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, var(--primary-darker), var(--dark));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://imgur.com/ZHrMNHf.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        .solution-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .solution-text {
+            flex: 1;
+        }
+        
+        .solution-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .solution-image img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: var(--light);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 35px 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        /* Bonus Section */
+        .bonus {
+            background: linear-gradient(135deg, var(--secondary), #E55A2B);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bonus:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"></polygon></svg>');
+            background-size: cover;
+        }
+        
+        .bonus-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .bonus-card {
+            background-color: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+        
+        .bonus-card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        
+        .bonus-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .bonus-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary);
+            opacity: 0.2;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .testimonial-info h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .testimonial-info p {
+            margin: 0;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary-darker));
+            color: white;
+            text-align: center;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            color: var(--dark);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card:before {
+            content: 'OFERTA ESPECIAL';
+            position: absolute;
+            top: 20px;
+            right: -50px;
+            background: var(--secondary);
+            color: white;
+            padding: 10px 60px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+        
+        .feature-list li {
+            margin-bottom: 12px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1rem;
+        }
+        
+        .feature-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+        
+        .price small {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: normal;
+        }
+        
+        .guarantee-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--success);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        .guarantee-badge i {
+            margin-right: 10px;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            background-color: var(--light);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            background-color: white;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .faq-question:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .faq-answer {
+            background-color: white;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-answer.active {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--secondary), #E55A2B);
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo i {
+            margin-right: 10px;
+        }
+        
+        .footer-links h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .solution-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .btn-large {
+                padding: 18px 35px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .counter-number {
+                font-size: 2rem;
+            }
+            
+            .price {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <i class="fab fa-whatsapp"></i>
+                    INOVE ZAP
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#problema">O Problema</a></li>
+                    <li><a href="#solucao">A Solução</a></li>
+                    <li><a href="#recursos">Recursos</a></li>
+                    <li><a href="#bonus">Bônus</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#planos" class="btn">Comece Agora</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>É VOCÊ QUEM FAZ TUDO NO SEU NEGÓCIO?<br>TENHA UM ATENDENTE I.A<br>QUE VENDE 24H POR DIA E NÃO RECLAMA.</h1>
+            <p>Cansado de ser refém do WhatsApp? De perder vendas porque não pode responder de madrugada? Chegou a hora de ter um funcionário automático.</p>
+                <a href="#planos" class="btn btn-large btn-pulse">QUERO MEU VENDEDOR IA AGORA!</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Counter Section -->
+    <section class="counter">
+        <div class="container">
+            <div class="counter-grid">
+                <div class="counter-item">
+                    <div class="counter-number">+11.247</div>
+                    <div class="counter-text">Vendedores Automatizados</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">+28M</div>
+                    <div class="counter-text">Mensagens Enviadas</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">+R$8M</div>
+                    <div class="counter-text">Em Vendas Geradas</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-number">98,7%</div>
+                    <div class="counter-text">Taxa de Satisfação</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problema" class="problem">
+        <div class="container">
+            <h2 class="section-title">Seu WhatsApp está roubando seu tempo e seu dinheiro.</h2>
+            <div class="problem-cards">
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>ESCRAVO DO CELULAR</h3>
+                    <p>Passa o dia inteiro respondendo as mesmas perguntas repetitivas, sem tempo para focar no crescimento do seu negócio.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-chart-line-down"></i>
+                    </div>
+                    <h3>VENDAS PERDIDAS</h3>
+                    <p>Clientes que chamam de madrugada ou fora do horário comercial e acabam comprando do concorrente que respondeu primeiro.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">
+                        <i class="fas fa-tired"></i>
+                    </div>
+                    <h3>CANSAÇO E ESTRESSE</h3>
+                    <p>A frustração de saber que poderia estar vendendo mais se tivesse um atendimento 24/7, mas você precisa dormir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solucao" class="solution">
+        <div class="container">
+            <div class="solution-content">
+                <div class="solution-text">
+                    <h2 class="section-title">ESQUEÇA TUDO ISSO. APRESENTAMOS O AGENTE IA DA INOVE ZAP.</h2>
+                    <p>Isto não é um simples robô de mensagens. É um <strong>funcionário virtual completo</strong>, com um cérebro que você mesmo programa, pronto para assumir 99% do seu atendimento e transformar seu WhatsApp em uma máquina de vendas que nunca desliga.</p>
+                    <p>Imagine ter um vendedor que trabalha 24 horas por dia, 7 dias por semana, sem folgas, sem férias e sem custos adicionais. Um vendedor que nunca cansa, nunca erra e nunca perde uma oportunidade de venda.</p>
+                    <a href="#planos" class="btn btn-secondary">QUERO ESSE VENDEDOR AGORA</a>
+                </div>
+                <div class="solution-image">
+                    <img src="https://imgur.com/ZHrMNHf.jpg" alt="Painel de controle da Inove Zap">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="recursos" class="features">
+        <div class="container">
+            <h2 class="section-title">SE LIGA NO PODER ABSURDO QUE VOCÊ VAI TER:</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>CRIE SEU VENDEDOR PERFEITO</h3>
+                    <p>No nosso painel, você vai esculpir a personalidade da sua IA. Quer que ela se chame "Thiago"? Que seja persuasiva? Objetiva? Use emojis? <strong>Você escreve as regras. Ela obedece.</strong> E com o Sistema de Memorização, ela lembra das conversas passadas com cada cliente, tornando o papo absurdamente pessoal.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>ESCOLHA A POTÊNCIA DO CÉREBRO (DE GRAÇA!)</h3>
+                    <p>Isso não é uma IA qualquer. Você tem o poder de escolher o motor que vai rodar seu atendimento. Use a velocidade absurda da <strong>Groq AI (com Llama 3.1)</strong> ou a inteligência avançada do <strong>Google Gemini</strong> sem gastar um centavo extra. É poder de fogo ilimitado e gratuito. <em>(Se preferir, ainda pode conectar seu plano pago do ChatGPT).</em></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-alt"></i>
+                    </div>
+                    <h3>MAIS HUMANO QUE MUITA GENTE</h3>
+                    <p>Sua IA não parece um robô. Ela tem efeito de digitação e faz pausas para responder. O mais incrível: se o cliente mandar um <strong>ÁUDIO, ELA TRANSCREVE E ENTENDE TUDO!</strong> Seus clientes nunca saberão que estão falando com uma inteligência artificial.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>O VENDEDOR QUE NUNCA DESISTE (FOLLOW-UP AUTOMÁTICO)</h3>
+                    <p>O cliente visualizou e não respondeu? Problema dele. O Agente IA tem um sistema de Follow-up. Você programa e, depois de 30 minutos, 2 horas ou 1 dia, a IA manda aquela mensagem: <em>"E aí, conseguiu dar uma olhada na proposta?"</em>. <strong>Ela persegue o cliente até ele comprar.</strong></p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>INTELIGÊNCIA QUE AGE (AUTOMAÇÃO REAL)</h3>
+                    <p>A conversa não é só papo. Com o Sistema de Automação Inteligente, você cria gatilhos. Se o cliente perguntar <em>"quais as formas de pagamento?"</em>, a IA pode acionar um sistema e <strong>gerar um link de cobrança na hora.</strong> Ela não só fala, ela FAZ.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>A PROVA DE FALHAS (MENTOR HUMANO)</h3>
+                    <p>E se a IA não souber responder? Sem pânico. Com o Sistema de Mentor Humano, ela <strong>transfere a conversa automaticamente para o seu WhatsApp pessoal</strong>, você resolve a dúvida e a IA aprende com a sua resposta. Nenhum lead é perdido.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section id="bonus" class="bonus">
+        <div class="container">
+            <div class="bonus-content">
+                <h2 class="section-title">E TEM MAIS! AO ADQUIRIR HOJE, VOCÊ LEVA DE BRINDE:</h2>
+                <p class="text-center">Aproveite esta oferta especial e receba ferramentas extras que vão turbinar ainda mais seus resultados!</p>
+                
+                <div class="bonus-grid">
+                    <div class="bonus-card">
+                        <div class="bonus-badge">Bônus #1</div>
+                        <div class="bonus-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <h3>EXTRATOR GOOGLE MAPS</h3>
+                        <p>Quer vender pra comércios? Digite "bares", "barbearias", "restaurantes" em qualquer cidade. A ferramenta te entrega na hora a lista com o WhatsApp de todos os donos. É só chegar oferecendo!</p>
+                    </div>
+                    <div class="bonus-card">
+                        <div class="bonus-badge">Bônus #2</div>
+                        <div class="bonus-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>GERADOR DE NÚMEROS POR DDD</h3>
+                        <p>Essa é pra começar do zero e dominar qualquer estado! Não tem lista? Escolha um DDD (ex: 11 pra SP, 71 pra Bahia), e a ferramenta GERA MILHARES de números de WhatsApp daquela região.</p>
+                    </div>
+                    <div class="bonus-card">
+                        <div class="bonus-badge">Bônus #3</div>
+                        <div class="bonus-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>BUSCADOR DE GRUPOS</h3>
+                        <p>A ferramenta varre o Google, YouTube e outras redes, te entregando centenas de links de grupos de vendas, amizade ou até de futebool pra você entrar e passar o rodo, extraindo o contato de todos os membros!</p>
+                    </div>
+                    <div class="bonus-card">
+                        <div class="bonus-badge">Bônus #4</div>
+                        <div class="bonus-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>ANTI-BLOQUEIO E AQUECEDOR DE CHIP</h3>
+                        <p>Nosso sistema de maturação aquece seus chips novos pra aguentar o trabalho pesado, e a variação de mensagens protege seu número principal contra bloqueios.</p>
+                    </div>
+                    <div class="bonus-card">
+                        <div class="bonus-badge">Bônus #5</div>
+                        <div class="bonus-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>AGENDAMENTO INTELIGENTE</h3>
+                        <p>Tem um compromisso importante às 21h? Programe suas propagandas pra serem disparadas no horário definido, sem você precisar fazer nada. Venda no momento certo!</p>
+                    </div>
+                    <div class="bonus-card">
+                        <div class="bonus-badge">Bônus #6</div>
+                        <div class="bonus-icon">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h3>VALIDADOR DE NÚMEROS</h3>
+                        <p>Antes de efetuar seus envios, passe as listas (principalmente as geradas por DDD) no nosso filtro. Ele mostra quem realmente tem WhatsApp e quem não tem. Zero perca de Tempo!</p>
+                    </div>
+                </div>
+                
+                <div class="text-center" style="margin-top: 40px;">
+                    <p><strong>Esses bônus sozinhos valem mais de R$ 297, mas hoje você leva GRÁTIS ao adquirir o Inove Zap!</strong></p>
+                    <a href="#planos" class="btn btn-large btn-pulse">QUERO GARANTIR MEUS BÔNUS!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="depoimentos" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Quem já automatizou o atendimento, não vive mais sem.</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Minhas vendas noturnas triplicaram. O Agente IA simplesmente não perde um cliente. É como ter um vendedor trabalhando enquanto eu durmo."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JS</div>
+                        <div class="testimonial-info">
+                            <h4>Joana Silva</h4>
+                            <p>Dona de E-commerce</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"O sistema de follow-up é surreal. Eu recupero quase 40% das vendas que antes eu perdia por esquecer de chamar o cliente de novo. Se paga sozinho."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">MP</div>
+                        <div class="testimonial-info">
+                            <h4>Marcos Pereira</h4>
+                            <p>Prestador de Serviços</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A transcrição de áudio mudou o jogo para mim. 80% dos meus clientes mandam áudio. Agora todos são respondidos na hora, de forma precisa."</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CM</div>
+                        <div class="testimonial-info">
+                            <h4>Carla Mendes</h4>
+                            <p>Corretora de Imóveis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="planos" class="pricing">
+        <div class="container">
+            <h2 class="section-title">Chega de ser atendente. Seja o dono da porra toda.</h2>
+            <p class="text-center">Quer colocar uma inteligência artificial de ponta para trabalhar e lucrar por você 24h por dia, sem custo adicional?</p>
+            
+            <div class="pricing-card">
+                <h3>PLANO INOVE ZAP - ACESSO TOTAL</h3>
+                <ul class="feature-list">
+                    <li>Agente IA com Personalidade Customizável</li>
+                    <li>Acesso Gratuito às IAs Groq (Llama 3.1) e Google Gemini</li>
+                    <li>Transcrição de Mensagens de Áudio</li>
+                    <li>Sistema de Follow-up Automático</li>
+                    <li>Automação Inteligente com Gatilhos</li>
+                    <li>Sistema de Mentor Humano (à prova de falhas)</li>
+                    <li>Controles de Lista Branca/Negra</li>
+                    <li>Suporte Prioritário 24/7</li>
+                    <li>Atualizações Gratuitas para Sempre</li>
+                    <li><strong>+ 6 BÔNUS EXCLUSIVOS (Valor: R$ Xx,xx)</strong></li>
+                </ul>
+                <div class="price">R$ 67<span>,80</span> <small>/mês</small></div>
+                <a href="https://wa.me/5500000000" class="btn btn-large btn-pulse">AUTOMATIZAR MINHAS VENDAS AGORA</a>
+                <div class="guarantee-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Garantia de 7 dias ou seu dinheiro de volta
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Ainda tem dúvidas?</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>É difícil de configurar?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! Nossa plataforma é 100% visual e intuitiva. Em poucos minutos, você conecta seu número e treina sua IA como se estivesse conversando com uma pessoa.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Meus clientes vão saber que é um robô?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Improvável. Com o efeito de digitação, pausas inteligentes, memória de conversa e a capacidade de entender áudios, a experiência é extremamente humana.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Posso intervir em uma conversa?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! A qualquer momento você pode pausar a IA e assumir a conversa. Além disso, o Sistema de Mentor Humano já transfere para você quando a IA não sabe a resposta.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Preciso pagar a mais para usar as IAs da Groq ou Google?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não. Elas já estão incluídas no seu plano, sem nenhum custo adicional. É potência máxima pelo mesmo preço.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Funciona com qualquer tipo de negócio?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim. Se você usa o WhatsApp para vender, agendar, ou atender clientes, o Agente IA vai otimizar seu processo, seja você um e-commerce, prestador de serviço, restaurante, ou qualquer outro.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Não perca mais uma venda por falta de resposta</h2>
+            <p>Transforme seu WhatsApp em uma máquina de vendas 24/7</p>
+            <a href="#planos" class="btn btn-large btn-pulse">QUERO MEU VENDEDOR IA AGORA</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">
+                        <i class="fab fa-whatsapp"></i>
+                        INOVE ZAP
+                    </div>
+                    <p>Transforme seu WhatsApp em uma máquina de vendas 24/7 com nossa inteligência artificial avançada.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#problema">O Problema</a></li>
+                        <li><a href="#solucao">A Solução</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#bonus">Bônus</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#planos">Planos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Termos de Serviço</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="mailto:suporte@inovezap.com">suporte@inovezap.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Esta ferramenta é uma aplicação independente e não possui afiliação ou endosso oficial do WhatsApp ou da Meta.</p>
+                <p>&copy; 2023 Inove Zap. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.classList.toggle('active');
+                
+                // Toggle icon
+                const icon = question.querySelector('span:last-child');
+                icon.textContent = answer.classList.contains('active') ? '−' : '+';
+            });
+        });
+        
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+        
+        // Header background on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
