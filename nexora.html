@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora - Plataforma Completa de Automação de Vendas com IA</title>
+    <style>
+        :root {
+            --primary: #00A859;
+            --secondary: #00C853;
+            --accent: #FF6B00;
+            --light: #F5F9F7;
+            --dark: #1A3C27;
+            --success: #28a745;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: white;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #FFD700;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: #e55a00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .btn-large {
+            padding: 15px 40px;
+            font-size: 1.1rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 168, 89, 0.9), rgba(0, 200, 83, 0.9)), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-badge {
+            background-color: var(--accent);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        /* Problem Section */
+        .problem {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .problem-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .problem-text {
+            flex: 1;
+        }
+        
+        .problem-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .problem-list {
+            list-style: none;
+        }
+        
+        .problem-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .problem-list li:before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #ff4d4d;
+            font-weight: bold;
+        }
+        
+        .problem-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .problem-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Solution Section */
+        .solution {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .solution-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+        .solution-intro h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--primary);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .feature-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Use Cases Section */
+        .use-cases {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .case-card {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 2px solid #e8f5e9;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .case-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .case-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Strategy Section */
+        .strategy {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .strategy-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .step-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .step-feature {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .step-feature h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            transition: transform 0.3s;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 3px solid var(--primary);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .price {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .price-amount {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .price-period {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .price-old {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+        
+        .price-save {
+            color: var(--success);
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .pricing-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .pricing-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+        
+        .faq-items {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--primary);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .cta .btn {
+            background-color: var(--accent);
+            font-size: 1.1rem;
+            padding: 15px 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #2d5a3d;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .problem-content, .step {
+                flex-direction: column;
+            }
+            
+            .step:nth-child(even) {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">NEX<span>ORA</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#problema">O Problema</a></li>
+                        <li><a href="#solucao">A Solução</a></li>
+                        <li><a href="#usos">Para Quem</a></li>
+                        <li><a href="#estrategia">Como Funciona</a></li>
+                        <li><a href="#precos">Preço</a></li>
+                        <li><a href="#cta">Começar Agora</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">NÃO PRECISA DE TRÁFEGO PAGO!</div>
+            <h1>A FORMA MAIS INTELIGENTE DE CAPTAR E ATENDER CLIENTES</h1>
+            <p>Descubra como vender qualquer produto ou serviço sem se matar no atendimento 1 a 1 ou gastar fortunas com anúncios</p>
+            <a href="#precos" class="btn btn-large">QUERO CONHECER A NEXORA</a>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem" id="problema">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Problema que Todo Empreendedor Enfrenta</h2>
+                <p>Para vender, a maioria te fala que só tem dois caminhos...</p>
+            </div>
+            <div class="problem-content">
+                <div class="problem-text">
+                    <h3>Mas e se eu te dissesse que isso é coisa do passado?</h3>
+                    <p>Que você não precisa fazer tráfego pago para ter um fluxo constante de pessoas interessadas e ainda ter um robô para atender por você?</p>
+                    <ul class="problem-list">
+                        <li>Se matar o dia inteiro no 1 a 1, catando e respondendo cliente</li>
+                        <li>Torrar uma fortuna com tráfego pago, sem garantia nenhuma</li>
+                        <li>Perder horas procurando clientes em grupos e redes sociais</li>
+                        <li>Ficar limitado pelo número de pessoas que consegue atender</li>
+                        <li>Depender apenas do boca a boca para conseguir novos clientes</li>
+                    </ul>
+                </div>
+                <div class="problem-image">
+                    <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Problemas de vendas">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solucao">
+        <div class="container">
+            <div class="section-title">
+                <h2>A Solução Definitiva para Empreendedores</h2>
+                <p>Existe uma ferramenta que é um atalho. Uma forma muito mais poderosa de encontrar, falar e atender centenas de clientes todos os dias, de forma orgânica e automática.</p>
+            </div>
+            <div class="solution-intro">
+                <h3>Apresento a Nexora: sua plataforma completa de prospecção, vendas e atendimento</h3>
+            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">📍</div>
+                    <h4>Extrator Google Maps</h4>
+                    <p>Quer vender pra comércios? Digite "bares", "barbearias", "adegas" em qualquer cidade. A ferramenta te entrega na hora a lista com o WhatsApp de todos os donos.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔥</div>
+                    <h4>Gerador de Números por DDD</h4>
+                    <p>Comece do zero e domine qualquer estado! Escolha um DDD e a ferramenta GERA MILHARES de números de WhatsApp daquela região pra você.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔎</div>
+                    <h4>Buscador de Grupos</h4>
+                    <p>A ferramenta varre a internet e te entrega centenas de links de grupos de WhatsApp por interesse para você entrar e extrair o contato de todos os membros!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases" id="usos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Funciona Para Qualquer Tipo de Negócio</h2>
+                <p>Seja qual for seu produto ou serviço, a Nexora vai transformar suas vendas</p>
+            </div>
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-icon">💼</div>
+                    <h4>Consultores & Freelancers</h4>
+                    <p>Advogados, contadores, coaches, designers e outros profissionais liberais</p>
+                </div>
+                <div class="case-card">
+                    <div class="case-icon">🏪</div>
+                    <h4>Comércio Local</h4>
+                    <p>Lojas, restaurantes, serviços de beleza, oficinas e pequenos negócios</p>
+                </div>
+                <div class="case-card">
+                    <div class="case-icon">📱</div>
+                    <h4>Produtos Digitais</h4>
+                    <p>Cursos, ebooks, softwares, assinaturas e infoprodutos</p>
+                </div>
+                <div class="case-card">
+                    <div class="case-icon">🚗</div>
+                    <h4>Serviços Especializados</h4>
+                    <p>Manutenção, reformas, instalações, consertos e serviços técnicos</p>
+                </div>
+                <div class="case-card">
+                    <div class="case-icon">🏢</div>
+                    <h4>Empresas B2B</h4>
+                    <p>Fornecedores, distribuidores, serviços corporativos e wholesale</p>
+                </div>
+                <div class="case-card">
+                    <div class="case-icon">🛍️</div>
+                    <h4>E-commerce & Dropshipping</h4>
+                    <p>Lojas online, marketplaces, revendedores e afiliados</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section class="strategy" id="estrategia">
+        <div class="container">
+            <div class="section-title">
+                <h2>SE LIGA NA ESTRATÉGIA COMPLETA E ABSURDA:</h2>
+            </div>
+            <div class="strategy-steps">
+                <!-- Primeiro Passo -->
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>PRIMEIRO, A FÁBRICA DE CONTATOS</h3>
+                        <p>Aqui você cria sua lista do zero, sem depender de ninguém</p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <h4>📍 EXTRATOR GOOGLE MAPS</h4>
+                                <p>Encontre estabelecimentos comerciais de qualquer tipo em qualquer cidade</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4>🔥 GERADOR DE NÚMEROS POR DDD</h4>
+                                <p>Gere milhares de números de WhatsApp de qualquer região do Brasil</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4>🔎 BUSCADOR DE GRUPOS</h4>
+                                <p>Encontre grupos de WhatsApp por interesse e extraia todos os contatos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Segundo Passo -->
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>SEGUNDO, A DIVULGAÇÃO EXPLOSIVA</h3>
+                        <p>Agora você ataca com suas mensagens de vendas</p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <h4>💥 EM MASSA NO PRIVADO</h4>
+                                <p>Dispara sua propaganda diretamente no privado de milhares de pessoas com um clique</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4>💣 EM CENTENAS DE GRUPOS</h4>
+                                <p>Posta sua propaganda em todos os grupos que você entrou de uma só vez</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Terceiro Passo -->
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>TERCEIRO, O ARSENAL DE AUTOMAÇÃO INTELIGENTE</h3>
+                        <p>Trabalhe como uma empresa grande, mesmo sozinho</p>
+                        <div class="step-features">
+                            <div class="step-feature">
+                                <h4>🤖 CHATBOT COM INTELIGÊNCIA ARTIFICIAL</h4>
+                                <p>Configure nosso robô para atender por você 24h por dia! Já vem com a I.A. da Meta (Llama) TOTALMENTE GRATUITA E ILIMITADA.</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4>🛡️ ANTI-BLOQUEIO E AQUECEDOR DE CHIP</h4>
+                                <p>Nosso sistema protege seu número e aquece chips novos para aguentar o trabalho pesado</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4>⏰ AGENDAMENTO INTELIGENTE</h4>
+                                <p>Programe suas propagandas para serem disparadas nos horários de pico automaticamente</p>
+                            </div>
+                            <div class="step-feature">
+                                <h4>✅ VALIDADOR DE NÚMEROS</h4>
+                                <p>Filtre suas listas para mostrar apenas quem realmente tem WhatsApp, zerando o desperdício</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="precos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Acesso Completo à Plataforma</h2>
+                <p>Um único plano com todos os recursos para transformar seus resultados</p>
+            </div>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Plano Vitalício</h3>
+                    <div class="price">
+                        <div class="price-amount">R$ 147,30</div>
+                        <div class="price-period">Acesso a toda vida</div>
+                        <div class="price-old">De R$ 6.364 <span class="price-save">Economize R$ 6.217</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Contatos ilimitados</li>
+                        <li>Extrator Google Maps</li>
+                        <li>Gerador de números por DDD</li>
+                        <li>Buscador de grupos</li>
+                        <li>Chatbot com IA gratuito</li>
+                        <li>Anti-bloqueio e aquecedor de chip</li>
+                        <li>Agendamento inteligente</li>
+                        <li>Validador de números</li>
+                        <li>Suporte prioritário</li>
+                        <li>Atualizações gratuitas</li>
+                        <li>Acesso Vitalicio</li>
+                    </ul>
+                    <a href="#cta" class="btn">QUERO GARANTIR MEU ACESSO</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Perguntas Frequentes</h2>
+                <p>Tire suas dúvidas sobre a Nexora</p>
+            </div>
+            
+            <div class="faq-items">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Funciona para qualquer tipo de negócio?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! A Nexora foi desenvolvida para atender qualquer tipo de empreendedor, desde profissionais liberais até donos de comércio local, prestadores de serviço, vendedores de produtos digitais e muito mais.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Quantos contatos posso extrair por mês?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O plano vitalício oferece contatos ilimitados! Você pode extrair quantos contatos precisar sem restrições.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        O chatbot realmente funciona 24/7?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sim! Nosso chatbot com IA trabalha ininterruptamente, atendendo clientes, tirando dúvidas e qualificando leads mesmo enquanto você dorme ou está offline.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Como funciona o pagamento?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>O pagamento é único e vitalício. Você paga uma vez e tem acesso à plataforma para sempre, com todos os recursos disponíveis.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Preciso ter experiência com tecnologia?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Não! A Nexora foi desenvolvida para ser extremamente simples e intuitiva. Qualquer pessoa, mesmo sem experiência prévia, consegue usar todas as funcionalidades em poucos minutos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <h2>Pronto pra parar de perder tempo e começar a lucrar de verdade?</h2>
+            <p>Resumindo: com a Nexora você cria a lista do zero, encontra clientes, divulga em massa, protege seu número e ainda tem um robô com I.A. para atender todo mundo. É a ferramenta mais completa e agressiva do mercado.</p>
+            <a href="#" class="btn btn-large">QUERO ACESSAR A NEXORA AGORA</a>
+            <p><small>Pagamento único • Acesso imediato • Suporte dedicado</small></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>Nexora</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Depoimentos</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Extrator Google Maps</a></li>
+                        <li><a href="#">Gerador de Números</a></li>
+                        <li><a href="#">Buscador de Grupos</a></li>
+                        <li><a href="#">Chatbot com IA</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Status do Sistema</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">LGPD</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 Nexora. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
