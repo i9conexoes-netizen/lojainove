@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>INOVE AlvoZap - Fábrica de Prospecção e Vendas</title>
+    <title>Inove AlvoZap - Fábrica de Prospecção e Vendas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -27,6 +27,7 @@
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: 16px;
         }
         
         .container {
@@ -40,7 +41,7 @@
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            padding: 20px 0;
+            padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -54,7 +55,7 @@
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 800;
             display: flex;
             align-items: center;
@@ -62,7 +63,7 @@
         
         .logo i {
             margin-right: 10px;
-            font-size: 32px;
+            font-size: 28px;
         }
         
         nav ul {
@@ -71,7 +72,7 @@
         }
         
         nav ul li {
-            margin-left: 25px;
+            margin-left: 20px;
         }
         
         nav ul li a {
@@ -81,105 +82,18 @@
             transition: all 0.3s;
             padding: 8px 15px;
             border-radius: 20px;
+            font-size: 16px;
         }
         
         nav ul li a:hover {
             background-color: rgba(255,255,255,0.2);
         }
         
-        /* Menu Hambúrguer */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 5px;
-        }
-        
-        .menu-toggle span {
-            width: 30px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
-            border-radius: 2px;
-        }
-        
-        /* Menu Mobile */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 80%;
-            max-width: 300px;
-            height: 100vh;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            z-index: 1100;
-            padding: 80px 20px 20px;
-            transition: right 0.3s ease;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-        }
-        
-        .mobile-menu ul {
-            list-style: none;
-        }
-        
-        .mobile-menu ul li {
-            margin-bottom: 20px;
-        }
-        
-        .mobile-menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            display: block;
-            padding: 12px 15px;
-            border-radius: 8px;
-            transition: all 0.3s;
-        }
-        
-        .mobile-menu ul li a:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
-        
-        .close-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1050;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s;
-        }
-        
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
         .btn {
             display: inline-block;
             background-color: var(--accent);
             color: white;
-            padding: 14px 30px;
+            padding: 12px 25px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
@@ -188,6 +102,7 @@
             cursor: pointer;
             text-align: center;
             box-shadow: 0 4px 15px rgba(255,107,0,0.3);
+            font-size: 16px;
         }
         
         .btn:hover {
@@ -197,8 +112,39 @@
         }
         
         .btn-large {
-            padding: 18px 45px;
-            font-size: 1.2rem;
+            padding: 16px 40px;
+            font-size: 18px;
+        }
+        
+        /* Menu Hamburguer */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 25px;
+            justify-content: space-between;
+        }
+        
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(11px) rotate(45deg);
+        }
+        
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-11px) rotate(-45deg);
         }
         
         /* Hero Section */
@@ -207,55 +153,55 @@
             background-size: cover;
             background-position: center;
             color: white;
-            padding: 120px 0;
+            padding: 100px 0;
             text-align: center;
             position: relative;
         }
         
         .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
             line-height: 1.2;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
         }
         
         .hero p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto 35px;
             font-weight: 500;
         }
         
         .hero-badge {
             background-color: var(--accent);
-            padding: 10px 25px;
+            padding: 8px 20px;
             border-radius: 30px;
-            font-size: 1rem;
+            font-size: 16px;
             font-weight: 700;
             display: inline-block;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
         
         /* Problem Section */
         .problem {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: white;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .section-title p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 800px;
             margin: 0 auto;
             color: #666;
@@ -264,7 +210,7 @@
         .problem-content {
             display: flex;
             align-items: center;
-            gap: 60px;
+            gap: 50px;
         }
         
         .problem-text {
@@ -272,8 +218,8 @@
         }
         
         .problem-text h3 {
-            font-size: 2rem;
-            margin-bottom: 25px;
+            font-size: 1.7rem;
+            margin-bottom: 20px;
             color: var(--dark);
         }
         
@@ -282,10 +228,10 @@
         }
         
         .problem-list li {
-            margin-bottom: 18px;
-            padding-left: 40px;
+            margin-bottom: 15px;
+            padding-left: 35px;
             position: relative;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .problem-list li:before {
@@ -294,7 +240,7 @@
             left: 0;
             color: #ff4d4d;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
         
         .problem-image {
@@ -310,37 +256,37 @@
         
         /* Solution Section */
         .solution {
-            padding: 100px 0;
+            padding: 80px 0;
             background: linear-gradient(135deg, var(--light), #e8f5e9);
         }
         
         .solution-intro {
             text-align: center;
             max-width: 900px;
-            margin: 0 auto 60px;
+            margin: 0 auto 50px;
         }
         
         .solution-intro h3 {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--dark);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .solution-intro p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #555;
         }
         
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
         
         .feature-card {
             background-color: white;
             border-radius: 15px;
-            padding: 40px 30px;
+            padding: 30px 25px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
@@ -353,33 +299,33 @@
         }
         
         .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
+            font-size: 3rem;
+            margin-bottom: 20px;
             color: var(--primary);
         }
         
         .feature-card h4 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             color: var(--dark);
         }
         
         /* Strategy Section */
         .strategy {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: white;
         }
         
         .strategy-steps {
             display: flex;
             flex-direction: column;
-            gap: 70px;
+            gap: 60px;
         }
         
         .step {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
         }
         
         .step:nth-child(even) {
@@ -389,13 +335,13 @@
         .step-number {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.7rem;
             font-weight: bold;
             flex-shrink: 0;
             box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
@@ -406,41 +352,41 @@
         }
         
         .step-content h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             color: var(--dark);
         }
         
         .step-features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
         }
         
         .step-feature {
             background-color: var(--light);
-            padding: 20px;
+            padding: 18px;
             border-radius: 12px;
             border-left: 5px solid var(--primary);
         }
         
         .step-feature h4 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
             color: var(--dark);
             display: flex;
             align-items: center;
         }
         
         .step-feature h4 i {
-            margin-right: 10px;
-            font-size: 1.3rem;
+            margin-right: 8px;
+            font-size: 1.1rem;
         }
         
         /* Pricing Section */
         .pricing {
-            padding: 100px 0;
+            padding: 80px 0;
             background: linear-gradient(135deg, var(--light), #e8f5e9);
         }
         
@@ -452,7 +398,7 @@
         .pricing-card {
             background: white;
             border-radius: 20px;
-            padding: 50px 40px;
+            padding: 40px 30px;
             box-shadow: 0 15px 40px rgba(0,0,0,0.1);
             position: relative;
             transition: transform 0.3s;
@@ -467,18 +413,18 @@
         }
         
         .pricing-card h3 {
-            font-size: 2rem;
+            font-size: 1.7rem;
             color: var(--dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .price {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .price-amount {
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: bold;
             color: var(--primary);
             line-height: 1;
@@ -486,35 +432,35 @@
         
         .price-period {
             color: #666;
-            font-size: 1.2rem;
-            margin-top: 10px;
+            font-size: 1.1rem;
+            margin-top: 8px;
         }
         
         .price-old {
             text-decoration: line-through;
             color: #999;
-            font-size: 1.5rem;
-            margin-top: 10px;
+            font-size: 1.3rem;
+            margin-top: 8px;
         }
         
         .price-save {
             color: #e74c3c;
             font-weight: bold;
-            margin-left: 10px;
+            margin-left: 8px;
         }
         
         .pricing-features {
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             text-align: left;
         }
         
         .pricing-features li {
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #eee;
             position: relative;
-            padding-left: 40px;
-            font-size: 1.1rem;
+            padding-left: 35px;
+            font-size: 1rem;
         }
         
         .pricing-features li:before {
@@ -523,18 +469,18 @@
             left: 0;
             color: var(--primary);
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
         
         .pricing-card .btn {
             width: 100%;
             text-align: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
         
         /* FAQ Section */
         .faq {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: white;
         }
         
@@ -544,7 +490,7 @@
         }
         
         .faq-item {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid #e0e0e0;
             border-radius: 12px;
             overflow: hidden;
@@ -556,7 +502,7 @@
         }
         
         .faq-question {
-            padding: 25px;
+            padding: 20px;
             background: var(--light);
             font-weight: 600;
             cursor: pointer;
@@ -564,63 +510,63 @@
             justify-content: space-between;
             align-items: center;
             color: var(--dark);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .faq-answer {
-            padding: 0 25px;
+            padding: 0 20px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s, padding 0.3s;
         }
         
         .faq-item.active .faq-answer {
-            padding: 25px;
+            padding: 20px;
             max-height: 500px;
         }
         
         /* CTA Section */
         .cta {
-            padding: 100px 0;
+            padding: 80px 0;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             text-align: center;
         }
         
         .cta h2 {
-            font-size: 2.8rem;
-            margin-bottom: 30px;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
         }
         
         .cta p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto 35px;
         }
         
         .cta .btn {
             background-color: var(--accent);
-            font-size: 1.3rem;
-            padding: 20px 50px;
+            font-size: 1.2rem;
+            padding: 18px 45px;
         }
         
         /* Footer */
         footer {
             background-color: var(--dark);
             color: white;
-            padding: 70px 0 30px;
+            padding: 60px 0 25px;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 35px;
+            margin-bottom: 35px;
         }
         
         .footer-column h4 {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
             color: var(--primary);
         }
         
@@ -629,13 +575,14 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         
         .footer-column ul li a {
             color: #ccc;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 15px;
         }
         
         .footer-column ul li a:hover {
@@ -644,16 +591,16 @@
         
         .copyright {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 25px;
             border-top: 1px solid #2d5a3d;
             color: #999;
-            font-size: 1rem;
+            font-size: 15px;
         }
         
         /* Responsive */
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .problem-content, .step {
@@ -663,6 +610,12 @@
             .step:nth-child(even) {
                 flex-direction: column;
             }
+            
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
         }
         
         @media (max-width: 768px) {
@@ -671,8 +624,28 @@
                 text-align: center;
             }
             
-            nav ul {
+            nav {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, var(--primary), var(--secondary));
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
             }
             
             .menu-toggle {
@@ -680,15 +653,70 @@
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 1.7rem;
+            }
+            
+            .problem-text h3 {
+                font-size: 1.5rem;
+            }
+            
+            .solution-intro h3 {
+                font-size: 1.5rem;
+            }
+            
+            .step-content h3 {
+                font-size: 1.3rem;
+            }
+            
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+            
+            .price-amount {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 70px 0;
+            }
+            
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-badge {
+                font-size: 14px;
+            }
+            
+            .btn-large {
+                padding: 14px 30px;
+                font-size: 16px;
+            }
+            
+            .problem, .solution, .strategy, .pricing, .faq, .cta {
+                padding: 60px 0;
+            }
+            
+            .feature-card {
+                padding: 25px 20px;
+            }
+            
+            .pricing-card {
+                padding: 30px 20px;
+            }
+            
+            .step-features {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -710,9 +738,14 @@
             <div class="header-content">
                 <div class="logo">
                     <i class="fab fa-whatsapp"></i>
-                    INOVE AlvoZap 
+                    Inove AlvoZap
                 </div>
-                <nav>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav id="mainNav">
                     <ul>
                         <li><a href="#problema">O Problema</a></li>
                         <li><a href="#solucao">A Solução</a></li>
@@ -721,37 +754,17 @@
                         <li><a href="#cta">Comprar Agora</a></li>
                     </ul>
                 </nav>
-                <div class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
         </div>
     </header>
-
-    <!-- Menu Mobile -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="close-menu" id="closeMenu">&times;</button>
-        <ul>
-            <li><a href="#problema">O Problema</a></li>
-            <li><a href="#solucao">A Solução</a></li>
-            <li><a href="#estrategia">Como Funciona</a></li>
-            <li><a href="#precos">Preço</a></li>
-            <li><a href="#cta">Comprar Agora</a></li>
-        </ul>
-    </div>
-    
-    <!-- Overlay para fechar o menu -->
-    <div class="overlay" id="overlay"></div>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container fade-in">
             <div class="hero-badge">NÃO PRECISA DE TRÁFEGO PAGO!</div>
-            <h1>CONHEÇA A FORMA MAIS INTELIGENTE DE CAPTAR CLIENTES PARA IPTV</h1>
-            <p>Descubra como vender IPTV sem se matar no atendimento 1 a 1 ou gastar fortunas com anúncios sem retorno</p>
-            <a href="#precos" class="btn btn-large">QUERO ACESSAR O INOVE ZAP</a>
+            <h1>CONHEÇA A FORMA MAIS INTELIGENTE DE CAPTAR CLIENTES</h1>
+            <p>Descubra como vender qualquer produto ou serviço sem se matar no atendimento 1 a 1 ou gastar fortunas com anúncios sem retorno</p>
+            <a href="#precos" class="btn btn-large">QUERO ACESSAR O Inove AlvoZap</a>
         </div>
     </section>
 
@@ -759,13 +772,13 @@
     <section class="problem" id="problema">
         <div class="container">
             <div class="section-title">
-                <h2>O Problema que Todo Vendedor de IPTV Enfrenta</h2>
-                <p>Pra vender IPTV, a maioria te fala que só tem dois caminhos...</p>
+                <h2>O Problema que Todo Vendedor Enfrenta</h2>
+                <p>Pra vender, a maioria te fala que só tem dois caminhos...</p>
             </div>
             <div class="problem-content">
                 <div class="problem-text">
                     <h3>Mas e se eu te dissesse que isso é papo furado?</h3>
-                    <p>Que você não precisa fazer tráfego pago para ter um fluxo constante de pessoas interessadas no seu serviço?</p>
+                    <p>Que você não precisa fazer tráfego pago para ter um fluxo constante de pessoas interessadas no seu produto ou serviço?</p>
                     <ul class="problem-list">
                         <li>Se matar o dia inteiro no 1 a 1, catando cliente de forma manual e lenta</li>
                         <li>Torrar uma fortuna com tráfego pago, sem garantia nenhuma de retorno</li>
@@ -785,17 +798,17 @@
     <section class="solution" id="solucao">
         <div class="container">
             <div class="section-title">
-                <h2>A Solução Definitiva para Vendedores de IPTV</h2>
+                <h2>A Solução Definitiva para Vendedores</h2>
                 <p>Existe uma ferramenta que é um atalho. Uma forma muito mais poderosa de encontrar e falar com centenas de clientes todos os dias, de forma orgânica e automática.</p>
             </div>
             <div class="solution-intro">
-                <h3>Apresento o Inove Zap: sua fábrica de prospecção e vendas que coloca o controle total no seu bolso</h3>
+                <h3>Apresento o Inove AlvoZap: sua fábrica de prospecção e vendas que coloca o controle total no seu bolso</h3>
             </div>
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">📍</div>
                     <h4>Extrator Google Maps</h4>
-                    <p>Quer vender pra comércios? Digite "bares", "barbearias", "adegas" em qualquer cidade. A ferramenta te entrega na hora a lista com o WhatsApp de todos os donos. É só chegar oferecendo o plano pra eles passarem os jogos!</p>
+                    <p>Quer vender pra comércios? Digite "bares", "barbearias", "adegas" em qualquer cidade. A ferramenta te entrega na hora a lista com o WhatsApp de todos os donos. É só chegar oferecendo seu produto ou serviço!</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔥</div>
@@ -805,7 +818,7 @@
                 <div class="feature-card">
                     <div class="feature-icon">🔎</div>
                     <h4>Buscador de Grupos</h4>
-                    <p>A ferramenta varre o Google, YouTube e outras redes, te entregando centenas de links de grupos de futebol, filmes e séries pra você entrar e passar o rodo, extraindo o contato de todos os membros!</p>
+                    <p>A ferramenta varre o Google, YouTube e outras redes, te entregando centenas de links de grupos de qualquer nicho pra você entrar e passar o rodo, extraindo o contato de todos os membros!</p>
                 </div>
             </div>
         </div>
@@ -873,7 +886,7 @@
                             </div>
                             <div class="step-feature">
                                 <h4><i class="fas fa-clock"></i> AGENDAMENTO INTELIGENTE</h4>
-                                <p>Tem jogo importante às 21h? Programe suas propagandas pra serem disparadas no horário de pico, sem você precisar fazer nada</p>
+                                <p>Tem horário de pico? Programe suas propagandas pra serem disparadas no melhor momento, sem você precisar fazer nada</p>
                             </div>
                             <div class="step-feature">
                                 <h4><i class="fas fa-check-circle"></i> VALIDADOR DE NÚMEROS</h4>
@@ -926,7 +939,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>Perguntas Frequentes</h2>
-                <p>Tire suas dúvidas sobre o Inove Zap</p>
+                <p>Tire suas dúvidas sobre o Inove AlvoZap</p>
             </div>
             
             <div class="faq-items">
@@ -936,7 +949,7 @@
                         <span>+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Não! O Inove Zap funciona para qualquer tipo de negócio. Focamos em IPTV porque é um mercado muito aquecido, mas você pode usar para vender qualquer produto ou serviço.</p>
+                        <p>Não! O Inove AlvoZap funciona para qualquer tipo de negócio. Focamos em IPTV porque é um mercado muito aquecido, mas você pode usar para vender qualquer produto ou serviço.</p>
                     </div>
                 </div>
                 
@@ -956,7 +969,7 @@
                         <span>+</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Não! O Inove Zap foi desenvolvido para ser extremamente simples e intuitivo. Qualquer pessoa, mesmo sem experiência prévia, consegue usar todas as funcionalidades em poucos minutos.</p>
+                        <p>Não! O Inove AlvoZap foi desenvolvido para ser extremamente simples e intuitivo. Qualquer pessoa, mesmo sem experiência prévia, consegue usar todas as funcionalidades em poucos minutos.</p>
                     </div>
                 </div>
                 
@@ -987,8 +1000,8 @@
     <section class="cta" id="cta">
         <div class="container">
             <h2>Pronto pra parar de perder tempo e começar a lucrar de verdade?</h2>
-            <p>Resumindo: com o Inove Zap você cria a lista do zero em qualquer estado, encontra clientes comerciais, acha grupos, divulga em massa e protege seu número. É a ferramenta mais completa e agressiva do mercado.</p>
-            <a href="#" class="btn btn-large">QUERO ACESSAR O INOVE ZAP AGORA</a>
+            <p>Resumindo: com o Inove AlvoZap você cria a lista do zero em qualquer estado, encontra clientes comerciais, acha grupos, divulga em massa e protege seu número. É a ferramenta mais completa e agressiva do mercado.</p>
+            <a href="#" class="btn btn-large">QUERO ACESSAR O Inove AlvoZap AGORA</a>
             <p><small>Pagamento único de R$ 100 • Acesso vitalício • Suporte dedicado</small></p>
         </div>
     </section>
@@ -998,7 +1011,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h4>Inove Zap</h4>
+                    <h4>Inove AlvoZap</h4>
                     <ul>
                         <li><a href="#">Sobre Nós</a></li>
                         <li><a href="#">Depoimentos</a></li>
@@ -1034,42 +1047,26 @@
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2023 Inove Zap. Todos os direitos reservados.
+                &copy; 2023 Inove AlvoZap. Todos os direitos reservados.
             </div>
         </div>
     </footer>
 
     <script>
-        // Menu Hambúrguer
+        // Menu Hamburguer
         const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const closeMenu = document.getElementById('closeMenu');
-        const overlay = document.getElementById('overlay');
+        const mainNav = document.getElementById('mainNav');
         
         menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
         });
         
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        overlay.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-        
-        // Fechar menu ao clicar em um link
-        document.querySelectorAll('.mobile-menu a').forEach(link => {
+        // Close menu when clicking on a link
+        document.querySelectorAll('#mainNav a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                overlay.classList.remove('active');
-                document.body.style.overflow = '';
+                menuToggle.classList.remove('active');
+                mainNav.classList.remove('active');
             });
         });
         
