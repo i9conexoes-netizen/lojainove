@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inove Soluções | Totalmente Responsivo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --dark: #1e293b;
+            --darker: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --header-height: 70px; /* Variável para altura do header */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: #e2e8f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animações de Scroll */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            height: var(--header-height);
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        /* Menu Desktop */
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .desktop-nav ul li {
+            margin-left: 2rem;
+        }
+
+        .desktop-nav ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .desktop-nav ul li a:hover {
+            color: white;
+        }
+
+        .desktop-nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s;
+        }
+
+        .desktop-nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.6rem 1.4rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Menu Mobile */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1002;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--darker);
+            z-index: 1001;
+            padding: 2rem;
+            transition: right 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            overflow-y: auto;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .mobile-close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 1.5rem;
+        }
+
+        .mobile-nav ul li a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .mobile-nav ul li a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .mobile-cta {
+            margin-top: 2rem;
+            display: block;
+            text-align: center;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        main {
+            padding-top: var(--header-height);
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            padding: 7rem 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, rgba(15, 23, 42, 0) 60%);
+            z-index: -1;
+            animation: pulse-glow 10s infinite alternate;
+        }
+
+        @keyframes pulse-glow {
+            from { transform: translate(-50%, -50%) scale(0.8); opacity: 0.7; }
+            to { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #b0bec5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            color: #94a3b8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: clamp(2.2rem, 4vw, 2.8rem);
+            margin-bottom: 1rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #e2e8f0, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-title p {
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--dark);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: var(--gradient);
+            z-index: 2;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(124, 58, 237, 0.4);
+        }
+
+        .product-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .product-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-card:hover .product-overlay {
+            opacity: 1;
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-badge {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .product-description {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            min-height: 50px;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-features li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .product-features li i {
+            color: var(--accent);
+            margin-right: 0.7rem;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn-small {
+            padding: 0.7rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            flex: 1;
+            text-align: center;
+        }
+        
+        /* Features Section */
+        .features {
+            background: rgba(15, 23, 42, 0.7);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+            background: var(--dark);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .feature-description {
+            color: #94a3b8;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--dark);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: "\f10d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.1;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #cbd5e1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .author-info h4 {
+            color: #e2e8f0;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+            border-radius: 20px;
+            margin: 0 auto;
+            max-width: calc(100% - 40px);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 4vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--darker);
+            color: #94a3b8;
+            padding: 4rem 0 2rem;
+            margin-top: 5rem;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: #e2e8f0;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: 40px; height: 2px;
+            background: var(--gradient);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px; height: 40px;
+            background-color: #1e293b;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--gradient);
+            transform: scale(1.1);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-nav, .cta-button {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+
+            .hero {
+                padding: 5rem 0;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 320px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .cta-section {
+                max-width: calc(100% - 20px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .product-content, .testimonial-card {
+                padding: 1.5rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                text-align: center;
+            }
+
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>Inove Soluções</span>
+                </a>
+                
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="#produtos">Produtos</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#depoimentos">Depoimentos</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </nav>
+                
+                <a href="#produtos" class="cta-button">Ver Produtos</a>
+                
+                <button class="mobile-menu-btn" aria-label="Abrir menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="overlay"></div>
+    <nav class="mobile-nav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <i class="fas fa-robot"></i>
+                <span>Inove</span>
+            </div>
+            <button class="mobile-close-btn" aria-label="Fechar menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul>
+            <li><a href="#produtos">Produtos</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+        <a href="#produtos" class="btn btn-primary mobile-cta">Ver Produtos</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="scroll-reveal">Soluções Inteligentes para o Crescimento de Seu Negócio</h1>
+                <p class="scroll-reveal" style="transition-delay: 0.1s;">Ferramentas poderosas para impulsionar suas vendas e otimizar seu atendimento 24/7.</p>
+                <div class="hero-buttons scroll-reveal" style="transition-delay: 0.2s;">
+                    <a href="#produtos" class="btn btn-primary">Conhecer Produtos</a>
+                    <a href="#contato" class="btn btn-secondary">Falar com Especialista</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="produtos" class="products">
+            <div class="container">
+                <div class="section-title scroll-reveal">
+                    <h2>Nossas Soluções</h2>
+                    <p>Conheça nossas ferramentas de automação desenvolvidas para maximizar seus resultados</p>
+                </div>
+                <div class="products-grid">
+                    <div class="product-card scroll-reveal">
+                        <div class="product-image" style="background-image: url('https://i.imgur.com/49t94gi.jpeg');">
+                            <div class="product-overlay">
+                                <a href="https://lojainove.pages.dev/inovezap" class="btn btn-primary">Ver Página de Vendas</a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge">Atendimento Automatizado</span>
+                            <h3 class="product-title">Inove Zap</h3>
+                            <p class="product-description">Atendimento 24/7 com Inteligência Artificial avançada que vende mesmo enquanto você dorme.</p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Personalização completa da IA</li>
+                                <li><i class="fas fa-check"></i> Escolha múltiplos modelos de IA</li>
+                                <li><i class="fas fa-check"></i> Transcreve e responde áudios</li>
+                                <li><i class="fas fa-check"></i> Sistema de follow-up automático</li>
+                            </ul>
+                            <div class="product-actions">
+                                <a href="https://lojainove.pages.dev/inovezap" class="btn-small btn-primary">Ver Detalhes</a>
+                                <a href="https://lojainove.pages.dev/inovezap" class="btn-small btn-secondary">Demonstração</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card scroll-reveal" style="transition-delay: 0.1s;">
+                        <div class="product-image" style="background-image: url('https://i.imgur.com/ZIkateu.jpeg');">  
+                            <div class="product-overlay">
+                                <a href="https://lojainove.pages.dev/inoveprosp" class="btn btn-primary">Ver Página de Vendas</a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge">Prospecção Automatizada</span>
+                            <h3 class="product-title">Inove Prosp</h3>
+                            <p class="product-description">Sua fábrica de prospecção e vendas que coloca o controle total no seu bolso.</p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Extrator Google Maps</li>
+                                <li><i class="fas fa-check"></i> Gerador de números por DDD</li>
+                                <li><i class="fas fa-check"></i> Buscador de grupos</li>
+                                <li><i class="fas fa-check"></i> Disparo em massa com anti-bloqueio</li>
+                            </ul>
+                            <div class="product-actions">
+                                <a href="https://lojainove.pages.dev/inoveprosp" class="btn-small btn-primary">Ver Detalhes</a>
+                                <a href="https://lojainove.pages.dev/inoveprosp" class="btn-small btn-secondary">Demonstração</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="product-image" style="background-image: url('https://i.imgur.com/uTLrYaG.jpeg');">
+                            <div class="product-overlay">
+                                <a href="https://lojainove.pages.dev/inovesocial" class="btn btn-primary">Ver Página de Vendas</a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <span class="product-badge">Automação Instagram</span>
+                            <h3 class="product-title">Inove Social</h3>
+                            <p class="product-description">Transforme qualquer perfil do Instagram em sua mina de ouro de clientes qualificados.</p>
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Segue audiência de qualquer perfil</li>
+                                <li><i class="fas fa-check"></i> Disparo no direct automatizado</li>
+                                <li><i class="fas fa-check"></i> Interação com stories</li>
+                                <li><i class="fas fa-check"></i> Busca por hashtag e localização</li>
+                            </ul>
+                            <div class="product-actions">
+                                <a href="https://lojainove.pages.dev/inovesocial" class="btn-small btn-primary">Ver Detalhes</a>
+                                <a href="https://lojainove.pages.dev/inovesocial" class="btn-small btn-secondary">Demonstração</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recursos" class="features">
+            <div class="container">
+                <div class="section-title scroll-reveal">
+                    <h2>Por que Escolher Nossas Soluções</h2>
+                    <p>Tecnologia de ponta e suporte especializado para maximizar seus resultados</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card scroll-reveal"><div class="feature-icon"><i class="fas fa-brain"></i></div><h3 class="feature-title">IA Avançada</h3><p class="feature-description">Utilizamos as mais modernas IAs do mercado para respostas inteligentes.</p></div>
+                    <div class="feature-card scroll-reveal" style="transition-delay: 0.1s;"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3 class="feature-title">Proteção Anti-Bloqueio</h3><p class="feature-description">Sistema avançado de aquecimento de chips e variação de mensagens.</p></div>
+                    <div class="feature-card scroll-reveal" style="transition-delay: 0.2s;"><div class="feature-icon"><i class="fas fa-bolt"></i></div><h3 class="feature-title">Alta Performance</h3><p class="feature-description">Processamento rápido e eficiente para lidar com grandes volumes de dados.</p></div>
+                    <div class="feature-card scroll-reveal" style="transition-delay: 0.3s;"><div class="feature-icon"><i class="fas fa-headset"></i></div><h3 class="feature-title">Suporte Especializado</h3><p class="feature-description">Equipe técnica disponível para ajudar você a maximizar seus resultados.</p></div>
+                    <div class="feature-card scroll-reveal" style="transition-delay: 0.4s;"><div class="feature-icon"><i class="fas fa-sync"></i></div><h3 class="feature-title">Atualizações Constantes</h3><p class="feature-description">Ferramentas atualizadas para se adaptar às mudanças das plataformas.</p></div>
+                    <div class="feature-card scroll-reveal" style="transition-delay: 0.5s;"><div class="feature-icon"><i class="fas fa-chart-line"></i></div><h3 class="feature-title">Análise de Resultados</h3><p class="feature-description">Painéis completos para acompanhar o desempenho de suas campanhas.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="depoimentos" class="testimonials">
+            <div class="container">
+                <div class="section-title scroll-reveal">
+                    <h2>O que Nossos Clientes Dizem</h2>
+                    <p>Resultados reais de empreendedores que usam nossas ferramentas</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card scroll-reveal">
+                        <div class="testimonial-text">"O Agente IA mudou completamente meu negócio. Antes eu passava o dia inteiro respondendo mensagens, agora a IA faz 90% do trabalho e vende até enquanto eu durmo!"</div>
+                        <div class="testimonial-author"><div class="author-avatar">RC</div><div class="author-info"><h4>Roberto Costa</h4><p>Loja de Eletrônicos</p></div></div>
+                    </div>
+                    <div class="testimonial-card scroll-reveal" style="transition-delay: 0.1s;">
+                        <div class="testimonial-text">"Com o Inove Prosp, consegui prospectar mais de 200 clientes por dia. Minhas vendas aumentaram 300% em apenas um mês. É a ferramenta mais completa que já usei!"</div>
+                        <div class="testimonial-author"><div class="author-avatar">AS</div><div class="author-info"><h4>Amanda Silva</h4><p>Consultora de Marketing</p></div></div>
+                    </div>
+                    <div class="testimonial-card scroll-reveal" style="transition-delay: 0.2s;">
+                        <div class="testimonial-text">"A Inove Social me mostrou um caminho que eu nem sabia que existia. Em 2 semanas, consegui mais de 1.000 seguidores qualificados e fechei vendas direto pelo Instagram."</div>
+                        <div class="testimonial-author"><div class="author-avatar">LS</div><div class="author-info"><h4>Lucas Santos</h4><p>Academia Online</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="cta-section scroll-reveal">
+            <div class="container">
+                <h2>Pronto para Revolucionar seu Negócio?</h2>
+                <p>Junte-se a milhares de empreendedores que já automatizaram suas vendas e atendimento com nossas ferramentas.</p>
+                <a href="#produtos" class="btn btn-primary">Começar Agora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Inove Soluções</h3>
+                    <p>Soluções inovadoras em automação e inteligência artificial para escalar seu negócio.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Produtos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#produtos">Inove Zap</a></li>
+                        <li><a href="#produtos">Inove Prosp</a></li>
+                        <li><a href="#produtos">Inove Social</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Suporte</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Tutoriais</a></li>
+                        <li><a href="#">Comunidade</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Inove Soluções. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Funcionalidade do Menu Mobile ---
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileCloseBtn = document.querySelector('.mobile-close-btn');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const overlay = document.querySelector('.overlay');
+            const navLinks = document.querySelectorAll('.mobile-nav a');
+
+            const openMobileMenu = () => {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const closeMobileMenu = () => {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            mobileMenuBtn.addEventListener('click', openMobileMenu);
+            mobileCloseBtn.addEventListener('click', closeMobileMenu);
+            overlay.addEventListener('click', closeMobileMenu);
+            
+            // Fecha o menu ao clicar em um link
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+            
+            // Fecha o menu ao redimensionar para tela de desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    closeMobileMenu();
+                }
+            });
+
+
+            // --- Efeito de Scroll no Header ---
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = 'rgba(15, 23, 42, 0.95)';
+                } else {
+                    header.style.backgroundColor = 'rgba(15, 23, 42, 0.85)';
+                }
+            });
+
+            // --- Animações ao Rolar a Página (Scroll Reveal) ---
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+
+            // Intersection Observer é uma API moderna e eficiente para detectar 
+            // quando um elemento entra na tela.
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Se o elemento está visível na tela (isIntersecting)
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Opcional: para a observação após a primeira animação
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // A animação começa quando 10% do item está visível
+            });
+
+            // Aplica o observador a cada elemento que deve ser animado
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+
+        });
+    </script>
+</body>
+</html>
